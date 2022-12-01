@@ -18,7 +18,7 @@ static int parse_from_stdin(int n, uint64_t elf_calories[n]) {
             elf_calories[n_elves++] = current_calories;
             current_calories = 0;
 
-            assert(n_elves < ELF_CAP && "Too many elves");
+            assert(n_elves < n && "Too many elves");
         } else {
             current_calories += calories;
         }
