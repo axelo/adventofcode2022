@@ -6,7 +6,7 @@ import "strings" // https://pkg.go.dev/strings
 import "strconv" // https://pkg.go.dev/strconv
 import "sort"    // https://pkg.go.dev/sort#Sort
 
-// type T1 = T2
+type ElfCalories = []int64
 
 func main() {
 	var elfCalories = parse(readInput())
@@ -38,12 +38,12 @@ func readInput() string {
 	return string(inputBytes)
 }
 
-func parse(input string) []int64 {
+func parse(input string) ElfCalories {
 	lines := strings.Split(input, "\n")
 	lines = append(lines, "")
 
 	var calories int64 = 0
-	var elfCalories []int64
+	var elfCalories ElfCalories
 
 	for _, line := range lines {
 		if line == "" {
