@@ -2,4 +2,4 @@
 
 You need [go](https://go.dev) installed, then run
 
-    go run dayNN.go
+    go run NNab.go < input/01.txt
