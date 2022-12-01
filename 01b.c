@@ -5,7 +5,7 @@
 #define ELF_CAP 300
 #define INPUT_CAP 32 * 1024
 
-static int parseFromStdin(int n, uint64_t elf_calories[n]) {
+static int parse_from_stdin(int n, uint64_t elf_calories[n]) {
     static char parse_input_buffer[INPUT_CAP];
 
     uint64_t n_elves = 0;
@@ -41,7 +41,7 @@ static int greater_than(const int64_t *a, const int64_t *b) {
 int main(void) {
     static uint64_t elf_calories[ELF_CAP];
 
-    int n_elves = parseFromStdin(ELF_CAP, elf_calories);
+    int n_elves = parse_from_stdin(ELF_CAP, elf_calories);
 
     assert(n_elves > 2 && "Expected at least three elves");
 
