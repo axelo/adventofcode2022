@@ -1,6 +1,6 @@
 #include <assert.h> // assert
 #include <limits.h> // UCHAR_MAX
-#include <stdio.h> // printf, fgets
+#include <stdio.h> // printf, fgets, feof
 #include <string.h> // strlen
 
 #define INPUT_BUFFER_CAP (8 * 1024)
