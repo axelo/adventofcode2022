@@ -5,14 +5,12 @@
 
 #define INPUT_BUFFER_CAP (8 * 1024)
 
-static int prioritize_from_char(char c) {
-    if (c >= 'a' && c <= 'z') {
-        return c - 'a' + 1;
-    } else if (c >= 'A' && c <= 'Z') {
-        return c - 'A' + 27;
-    } else {
-        return 0;
-    }
+static inline int prioritize_from_char(char c) {
+    return c >= 'a' && c <= 'z'
+               ? c - 'a' + 1
+           : c >= 'A' && c <= 'Z'
+               ? c - 'A' + 27
+               : 0;
 }
 
 int main(void) {
