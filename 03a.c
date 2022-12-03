@@ -1,6 +1,6 @@
 #include <assert.h> // assert
 #include <limits.h> // UCHAR_MAX
-#include <stdio.h> // printf
+#include <stdio.h> // printf, fgets
 #include <string.h> // strlen
 
 #define INPUT_BUFFER_CAP (8 * 1024)
@@ -40,6 +40,8 @@ int main(void) {
             }
         }
     }
+
+    assert(feof(stdin) && "Expected EOF set for stdin");
 
     printf("%d\n", sum_priority);
 

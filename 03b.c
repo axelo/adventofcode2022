@@ -1,6 +1,6 @@
 #include <assert.h> // assert
 #include <limits.h> // UCHAR_MAX
-#include <stdio.h> // printf
+#include <stdio.h> // printf, fgets
 #include <string.h> // strlen
 
 #define INPUT_BUFFER_CAP (8 * 1024)
@@ -31,8 +31,6 @@ int main(void) {
         }
 
         if (++group_index == GROUP_CAP) {
-            group_index = 0;
-
             for (int i = 0; i < UCHAR_MAX + 1; ++i) {
                 int count_sum = 0;
 
@@ -47,8 +45,12 @@ int main(void) {
                     sum_priority += prioritize_from_char(i);
                 }
             }
+
+            group_index = 0; // Reset for next group.
         }
     }
+
+    assert(feof(stdin) && "Expected EOF set for stdin");
 
     printf("%d\n", sum_priority);
 
