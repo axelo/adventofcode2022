@@ -14,8 +14,8 @@ typedef enum {
 
 typedef enum {
     L = 0,
-    D = 1,
-    W = 2
+    D = 3,
+    W = 6
 } Outcome;
 
 static Outcome opponent_vs_you[MAX_MOVE][MAX_MOVE] = {
@@ -52,7 +52,7 @@ int main(void) {
         Move you = move_from_char(input_buffer[2]);
 
         // +1 as we use `Move` 0..2 instead of 1..3.
-        total_score += (int64_t)you + 1 + (int64_t)opponent_vs_you[you][opponent] * 3;
+        total_score += (int64_t)you + 1 + (int64_t)opponent_vs_you[you][opponent];
     }
 
     assert(feof(stdin) && "Expected EOF set for stdin");
