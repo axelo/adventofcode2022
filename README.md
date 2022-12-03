@@ -4,7 +4,7 @@
 
 You need [clang](https://clang.llvm.org/) installed, then run
 
-    clang -fsanitize=address -Wall -Wpedantic -Werror -std=c17 -o NNab NNab.c && NNab < input/NN.txt
+    clang -fsanitize=address -Wall -Wextra -Wpedantic -Werror -std=c17 -o NNab NNab.c && NNab < input/NN.txt
 
 ## Go
 
