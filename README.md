@@ -11,3 +11,9 @@ You need [clang](https://clang.llvm.org/) installed, then run
 You need [go](https://go.dev) installed, then run
 
     go run NNab.go < input/NN.txt
+
+## Zig
+
+You need [zig](https://ziglang.org) installed, then run
+
+    zig run NNab.go < input/NN.txt
