@@ -16,4 +16,4 @@ You need [go](https://go.dev) installed, then run
 
 You need [zig](https://ziglang.org) installed, then run
 
-    zig run NNab.go < input/NN.txt
+    zig run NNab.zig < input/NN.txt
