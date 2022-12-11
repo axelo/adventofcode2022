@@ -136,10 +136,6 @@ int main(void) {
 
     int64_t m_business = (int64_t)ms[0].inspected_items * ms[1].inspected_items;
 
-    for (int i = 0; i < n_m; ++i) {
-        printf("m %d: %d\n", i, ms[i].inspected_items);
-    }
-
     printf("%lld\n", m_business);
     return 0;
 }
