@@ -25,7 +25,7 @@ static int compare_f_score_desc(int f_score[MAP_CAP][MAP_CAP], const P *a, const
     return f_score[b->y][b->x] - f_score[a->y][a->x];
 }
 
-static int a_star_search(Map_size map_size, uint8_t map[200][200], P start, P end) {
+static int a_star_search(Map_size map_size, uint8_t map[MAP_CAP][MAP_CAP], P start, P end) {
     int g_score[MAP_CAP][MAP_CAP];
     int f_score[MAP_CAP][MAP_CAP];
 
