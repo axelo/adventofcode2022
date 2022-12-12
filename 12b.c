@@ -21,7 +21,7 @@ static int h_score(P p, P end) {
     return abs(p.x - end.x) + abs(p.y - end.y);
 }
 
-static int compare_cost_desc(int f_score[MAP_CAP][MAP_CAP], const P *a, const P *b) {
+static int compare_f_score_desc(int f_score[MAP_CAP][MAP_CAP], const P *a, const P *b) {
     return f_score[b->y][b->x] - f_score[a->y][a->x];
 }
 
@@ -56,7 +56,7 @@ static int a_star_search(Map_size map_size, uint8_t map[200][200], P start, P en
     while (n_visited_nodes > 0) {
         // Seems to be fast enough for this problem, and simple to code.
         qsort_r(visited_nodes, n_visited_nodes, sizeof(visited_nodes[0]),
-                f_score, (int (*)(void *, const void *, const void *))compare_cost_desc);
+                f_score, (int (*)(void *, const void *, const void *))compare_f_score_desc);
 
         // Last one is the one with the lowest f score thanks to the sort above
         P current = visited_nodes[--n_visited_nodes];
