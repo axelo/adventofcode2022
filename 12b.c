@@ -54,18 +54,15 @@ static int a_star_search(Map_size map_size, uint8_t map[MAP_CAP][MAP_CAP], P sta
     f_score[start.y][start.x] = h_score(start, end);
 
     while (n_visited_nodes > 0) {
-        // Seems to be fast enough for this problem, and simple to code.
-        qsort_r(visited_nodes, n_visited_nodes, sizeof(visited_nodes[0]),
-                f_score, (int (*)(void *, const void *, const void *))compare_f_score_desc);
-
-        // Last one is the one with the lowest f score thanks to the sort above
+        // Last one is the one with the lowest f score.
         P current = visited_nodes[--n_visited_nodes];
 
         if (current.y == end.y && current.x == end.x) {
-            return f_score[current.y][current.x];
+            return g_score[current.y][current.x];
         }
 
         int current_height = map[current.y][current.x];
+        bool f_score_updated = false;
 
         for (int delta_i = 0; delta_i < n_deltas; ++delta_i) {
             P neighbor = {.x = current.x + deltas[delta_i].x,
@@ -87,6 +84,8 @@ static int a_star_search(Map_size map_size, uint8_t map[MAP_CAP][MAP_CAP], P sta
                     g_score[neighbor.y][neighbor.x] = tentative_g_score;
                     f_score[neighbor.y][neighbor.x] = tentative_g_score + h_score(neighbor, end);
 
+                    f_score_updated = true;
+
                     bool never_visited = true;
                     for (int i = 0; i < n_visited_nodes; ++i) {
                         if (visited_nodes[i].x == neighbor.x &&
@@ -103,6 +102,13 @@ static int a_star_search(Map_size map_size, uint8_t map[MAP_CAP][MAP_CAP], P sta
                     }
                 }
             }
+        }
+
+        if (f_score_updated) {
+            // Sort visited nodes by their f score descending so that the last node has
+            // the lowest score. Seems to be fast enough for this problem, and simple to code.
+            qsort_r(visited_nodes, n_visited_nodes, sizeof(visited_nodes[0]),
+                    f_score, (int (*)(void *, const void *, const void *))compare_f_score_desc);
         }
     }
 
